@@ -1,0 +1,36 @@
+/*This is a temporary CSS file for testing html builds in scratch.  Copy the contents to an appropriately named .scss file in <home>/styles when going live.  - Danny*/
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.resource_box {
+  background-color: #ddd;
+  position: relative;
+  width: 20em;
+  border-radius: .5em;
+  border: 2px solid black;
+}
+
+.resource_box img {
+  position: inherit;
+  width: 100%;
+  border-top-right-radius: .5em;
+  border-top-left-radius: .5em;
+  padding-bottom: 3em;
+}
+
+.title p {
+  font-family: 'Kadwa', serif;
+  line-height: 2em;
+  font-size: : 150%;
+  float: left;
+
+}
+
+.social_toggle {
+  background-color: #fff;
+  border: 1px solid black;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  float: right;
+}
