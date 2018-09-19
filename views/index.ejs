@@ -14,9 +14,17 @@
   <body>
     <h1>Hello World!</h1>
 
-    <section class='resource_box'>
-      <a href="<%- resources.url %>"><img src="<%- resources.picture_url %>"></a>
+    <ul> <%= database %>hi
 
-    </section>
+<% for (let data in database) { %>
+  <li> <%= `${data}`  %> </li>
+
+<% } %>
+
+      <!-- <% for(var url in database){ %>
+         <li> <%= `${url}: ${database[url]["Url"]}` %>  </li>
+
+        <%  } %> -->
+    </ul>
   </body>
 </html>
