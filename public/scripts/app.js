@@ -46,16 +46,16 @@ function loadResources() {
 
 // Adds a new entry into resources
 function addResources() {
-  $( "add-entry" ).on( "submit", function( event ) {
+  $( "add_entry" ).on( "submit", function( event ) {
     event.preventDefault();
     console.log( escape($(this).serialize()) );
-    let $error = $('#add-error');
+    let $error = $('#add_error');
     let $titleLength = $(this).find("title").val().length;
     let $description = $(this).find("description").val().length;
     if (!$titleLength) {
       // window.alert('You need to type something!')
       $error.text("You need a title!")
-      $('#add-error').show()
+      $('#add_error').show()
     } else if (!$descriptionLength) {
       // window.alert('Your post is too long!')
       $error.text("You need to add a description please.. for other users' sake..")
@@ -74,9 +74,9 @@ function addResources() {
       $('#tweet-error').show()
     } else {
       $.ajax('/api/resources', {
-        title: $(this).serialize(),
-        url: ,
-        description:
+        title: $(req.body.title),
+        url: $(req.body.url),
+        description: $(req.body.description)
         method: 'POST'
       })
       $('#add-error').hide()
