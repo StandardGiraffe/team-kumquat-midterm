@@ -7,11 +7,27 @@ HTTP                  VERB        What?
 /logout               POST        Destroys session cookie
 /register             GET         Form for user information (email, password)
 /register             POST        Send registration credentials to db, redirect to /
-/:id/profile          GET         Displays public user profile, tack on /:id below
-/:id/profile/edit     PUT         Edit your own profile page if you are the user.
-/:id                  GET         Shows all resources of given person's collection.
-/search/:tag          PUT         Searches database for resources matching tag
-/search/:id           PUT         Searches database for resources matching user
-/:id/add              POST        Submit url, title, tags, date, rating to resource db
-/:resource            GET         Shows comments, description, sharing options, like/rating/promote tog
-/:resource            PUT         Toggle like, rating, promotion
+
+<!-- /:id/profile          GET         Displays public user profile, tack on /:id below -->
+/users/:userid
+
+<!-- /:id/profile/edit     PUT         Edit your own profile page if you are the user. -->
+/users/:userid
+
+<!-- /:id                  GET         Shows all resources of given person's collection. -->
+/users/:userid/resources
+
+<!-- /search/:tag          PUT         Searches database for resources matching tag -->
+/search/:tag          GET
+
+<!-- /:id/add              POST        Submit url, title, tags, date, rating to resource db -->
+/users/:userid/resources   POST        Submit url, title, tags, date, rating to resource db
+
+
+<!-- /:resource            GET         Shows comments, description, sharing options, like/rating/promote tog -->
+/users/:userid/resources/:resourceid       GET         Shows comments, description, sharing options, like/rating/promote tog
+
+
+
+<!-- /:resource            PUT         Toggle like, rating, promotion -->
+/users/:userid/resources/:resourceid         PUT         Toggle like, rating, promotion
