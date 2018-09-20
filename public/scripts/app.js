@@ -78,6 +78,8 @@ function addResources() {
     } else {
       console.log("Passed all error checks..")
       console.log("What's being sent from app.js to resources.js: " + $(this).serialize());
+
+      //INSERT TO RESOURCES TABLE
       $.ajax('/api/resources', {
         data: $(this).serialize(),
         method: 'POST'
@@ -109,28 +111,50 @@ function addResources() {
 
 
 //#####################
-//       TAGS
+//      SEARCH
 //#####################
 
-// function searchTags() {
-//   knex.select('*')
-//     .from('famous_people')
-//     .where('first_name', 'ILIKE', inputName)
-//     .orWhere('last_name', 'ILIKE', inputName)
-//     // asCallback will wait until all the search is done, then handles it
-//     // Promises is the more modern way of doing it
-//     .asCallback(function(err, rows) {
-//       if (err) return console.error(err);
-//       console.log(`Found ${rows.length} person(s) by the name${inputName}:`);
-//       let count = 1;
-//       rows.forEach(output => {
-//         console.log(`- ${count}: ${output.first_name} ${output.last_name}, born '${output.birthdate.toLocaleString().slice(0,8)}'`,)
-//         count ++;
-//       })
-//       // knex.destroy();   // force closes the pooling
-//     });
-// }
 
+// Search by TAGS
+function searchTags() {
+  $( "#search_resources" ).on( "submit", function( event ) {
+    console.log('Beginning of add entry..')
+    event.preventDefault();
+    let $error = $('#add_error');
+  knex.select('*')
+    .from('resources')
+    .where('tags', 'ILIKE', '%topic%')
+    .asCallback(function(err, rows) {
+      if (err) return console.error(err);
+      console.log(`Loading resources into page..`);
+      loadResults(rows);
+      // knex.destroy();   // force closes the pooling
+    });
+}
+
+// Search by USERS
+function searchUsers() {
+  knex.select('*')
+    .from('users')
+    .where('tags', 'ILIKE', '%topic%')
+    .asCallback(function(err, rows) {
+      if (err) return console.error(err);
+      console.log(`Loading resources into page..`);
+      loadResults(rows);
+      // knex.destroy();   // force closes the pooling
+    });
+}
+
+
+//#####################
+// LOAD SEARCH RESULTS
+//#####################
+
+function loadResults(results) {
+  results.forEach(function(tweet) {
+    $(".resource_field").prepend(createTweetElement(tweet));
+  });
+}
 
 
 
