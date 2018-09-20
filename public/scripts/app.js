@@ -46,21 +46,24 @@ function loadResources() {
 
 // Adds a new entry into resources
 function addResources() {
-  $( "add_entry" ).on( "submit", function( event ) {
+  $( "#add_entry" ).on( "submit", function( event ) {
+    console.log('Beginning of add entry..')
     event.preventDefault();
-    console.log( escape($(this).serialize()) );
     let $error = $('#add_error');
-    let $titleLength = $(this).find("title").val().length;
-    let $description = $(this).find("description").val().length;
-    if (!$titleLength) {
+    let $titleLength = $(this).find("input[name='title']").val().length;
+    let $urlLength = $(this).find("input[name='url']").val().length;
+    let $descriptionLength = $(this).find("input[name='description']").val().length;
+    // console.log($titleLength);
+
+    if ($titleLength < 1) {
       // window.alert('You need to type something!')
       $error.text("You need a title!")
       $('#add_error').show()
-    } else if (!$descriptionLength) {
+    } else if ($descriptionLength < 1) {
       // window.alert('Your post is too long!')
       $error.text("You need to add a description please.. for other users' sake..")
       $('#tweet-error').show()
-    } else if (!$url) {
+    } else if ($urlLength < 1) {
       // window.alert('Your post is too long!')
       $error.text("What is the page you are adding?")
       $('#tweet-error').show()
@@ -73,18 +76,17 @@ function addResources() {
       $error.text("Your description is too long!")
       $('#tweet-error').show()
     } else {
+      console.log("Passed all error checks..")
+      console.log("What's being sent from app.js to resources.js: " + $(this).serialize());
       $.ajax('/api/resources', {
-        title: $(req.body.title),
-        url: $(req.body.url),
-        description: $(req.body.description)
+        data: $(this).serialize(),
         method: 'POST'
       })
       $('#add-error').hide()
-      loadTweets();
       $( 'form' ).each(function() {    // clears the form after submitting
         this.reset();
       });
-      console.log('Successfully added new entry to resources table');
+      console.log('Successfully sent to resources.js');
     }
   })
 }
@@ -106,14 +108,45 @@ function addResources() {
 
 
 
+//#####################
+//       TAGS
+//#####################
+
+// function searchTags() {
+//   knex.select('*')
+//     .from('famous_people')
+//     .where('first_name', 'ILIKE', inputName)
+//     .orWhere('last_name', 'ILIKE', inputName)
+//     // asCallback will wait until all the search is done, then handles it
+//     // Promises is the more modern way of doing it
+//     .asCallback(function(err, rows) {
+//       if (err) return console.error(err);
+//       console.log(`Found ${rows.length} person(s) by the name${inputName}:`);
+//       let count = 1;
+//       rows.forEach(output => {
+//         console.log(`- ${count}: ${output.first_name} ${output.last_name}, born '${output.birthdate.toLocaleString().slice(0,8)}'`,)
+//         count ++;
+//       })
+//       // knex.destroy();   // force closes the pooling
+//     });
+// }
+
 
 
 
 //#####################
-//    RUN FUNCTIONS
+//   OTHER FUNCTIONS
 //#####################
+
+// prevents malicious code being posted
+function escape(str) {
+  var div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
 
 $(document).ready(function() {
   loadUsers();
-  loadResources();
+  addResources();
+  console.log("All functions on app.js were run")
 })
