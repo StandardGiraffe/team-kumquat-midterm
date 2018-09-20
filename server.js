@@ -1,5 +1,9 @@
 "use strict";
 
+//########################################
+// DECLARE/REQUIRE
+//########################################
+
 require('dotenv').config();
 
 const PORT = process.env.PORT || 8080;
@@ -17,13 +21,26 @@ const knexLogger = require('knex-logger');
 
 
 
+//########################################
+// DATABASE ROUTES
+// Separated Routes for each Resource
+//########################################
 
-// Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
+const resourcesRoutes = require("./routes/resources");
+const commentsRoutes = require("./routes/comments");
+const likesRoutes = require("./routes/likes");
 
+
+
+
+//########################################
+// RUN/USE MIDDLEWARE
+//########################################
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
+
 app.use(morgan('dev'));
 
 // Log knex SQL queries to STDOUT as well
@@ -43,49 +60,33 @@ app.use(express.static("public"));
 
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
+app.use("/api/resources", resourcesRoutes(knex));
+app.use("/api/comments", commentsRoutes(knex));
+app.use("/api/likes", likesRoutes(knex));
 
 
-const tempDatabase = {
-  User01: {
-    "id": 1,
-    "Url": "seedUrl",
-    "picture url": "https://www.fillmurray.com/200/300",
-    "title": "SeedTitle",
-    "discritption": "Seeddiscription",
-    "likes": 7
-  },
-  User02: {
-    "id": 2,
-    "Url": "seedUrl",
-    "picture url": "https://www.fillmurray.com/200/300",
-    "title": "SeedTitle",
-    "discritption": "Seeddiscription",
-    "likes": 3
-  },
-  User03: {
-    "id": 3,
-    "Url": "seedUrl",
-    "picture url": "https://www.fillmurray.com/200/300",
-    "title": "SeedTitle",
-    "discritption": "Seeddiscription",
-    "likes": 4
-  }
-}
 
-
+//########################################
+// LOAD PAGES
+//########################################
 
 // Home page
 app.get("/", (req, res) => {
-  let templateVars = {
-    database:tempDatabase
-  }
-  res.render("index", templateVars);
+  res.render("index");
 });
 
+// // User Profile page
+// app.get("/:id", (req, res) => {
+//   res.render("/:id");
+// });
 
 
 
+
+//########################################
+// LISTEN PORT
+//########################################
 
 app.listen(PORT, () => {
-  console.log("Example app listening on port " + PORT);
+  console.log("Kumquat app listening on port " + PORT);
 });
