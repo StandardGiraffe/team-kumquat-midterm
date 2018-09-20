@@ -16,13 +16,17 @@ body {
   width: 100%;
   border-top-right-radius: .5em;
   border-top-left-radius: .5em;
-  padding-bottom: 3em;
+  padding-bottom: 0.5em;
 }
 
-.title p {
+.title {
   font-family: 'Kadwa', serif;
-  line-height: 2em;
-  font-size: : 150%;
+  font-size: 1.2em;
+  position: inherit;
+  margin-left: 0.2em;
+  border-bottom: 2px solid grey;
+  padding: 0;
+  line-height: 1.2em;
   float: left;
 
 }
