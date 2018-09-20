@@ -1,7 +1,19 @@
 body {
-  background-color: #EEE;
+  background-color: #000;
 
   h1 {
     color: #244751;
   }
+}
+
+#logo {
+  height: 3em;
+}
+
+#avatar {
+  height: 3em;
+}
+
+.resource_picture {
+  width: 100%;
 }
