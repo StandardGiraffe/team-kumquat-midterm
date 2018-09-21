@@ -169,6 +169,11 @@ let kumquat = await grabity.grab("https://www.flickr.com");
 });
 
 
+app.post("/addNewKumquat", (req,res) => {
+  res.send(req.body["kumquatUrl"])
+})
+
+
 
 // Other user's Profile
 app.get("/users/:id/", (req, res) => {
