@@ -25,7 +25,29 @@ function loadUsers() {
   });;
 }
 
+//#####################
+//     EDIT PROFILE
+//#####################
 
+function editProfile() {
+  $( "#edit_entry" ).on( "submit", function( event ) {
+    event.preventDefault();
+    let $error = $('#add_error');
+
+      console.log("Passed all error checks..")
+      console.log("What's being sent from app.js to resources.js: " + $(this).serialize());
+
+      //INSERT TO RESOURCES TABLE
+      $.ajax('/api/users', {
+        data: $(this).serialize(),
+        method: 'POST'
+      })
+      $('#add-error').hide()
+      $( 'form' ).each(function() {    // clears the form after submitting
+        this.reset();
+      });
+      console.log('Successfully sent to users.js');
+    })
 
 //#####################
 //     RESOURCES
@@ -99,7 +121,9 @@ function addResources() {
 //     COMMENTS
 //#####################
 
+function addComment() {
 
+}
 
 
 
@@ -107,7 +131,9 @@ function addResources() {
 //       LIKES
 //#####################
 
+function addLike() {
 
+}
 
 
 
@@ -183,5 +209,6 @@ $(document).ready(function() {
   addResources();
   searchTags();
   searchUsers();
+  editProfile();
   console.log("All functions on app.js were run")
 })

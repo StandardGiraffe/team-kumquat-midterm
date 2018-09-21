@@ -77,9 +77,36 @@ app.use("/api/navigation", navigationRoutes(knex));
 // LOAD PAGES
 //########################################
 
+var user_id = Rocker126
+
 // Home page
 app.get("/", (req, res) => {
   res.render("index");
+});
+
+// Login page
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
+// Registration page
+app.get("/register", (req, res) => {
+  res.render("register");
+});
+
+// Edit user profile
+app.get("/edit/:id", (req, res) => {
+  res.render("edit_user_profile");
+});
+
+// Add new resource
+app.get("/users/:id/new", (req, res) => {
+  res.render("new_resource");
+});
+
+// Other user's Profile
+app.get("/users/:id/", (req, res) => {
+  res.render("other_user_profile");
 });
 
 // // User Profile page

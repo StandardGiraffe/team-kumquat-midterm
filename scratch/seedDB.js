@@ -137,131 +137,131 @@ INSERT INTO users (id, name, email, password, avatar_url, bio) VALUES
 
 INSERT INTO resources (id, title, description, url, date_created, picture_url, tags) VALUES
     (
-      "1",
-      "Stars are wonderful",
-      "This page on astronomy is super useful",
-      "http://www.astronomy.com",
-      "2012-02-02",
-      "https://www.nasa.gov/sites/default/files/thumbnails/image/hs-2011-38-a-xlarge_web.jpg",
-      "astronomy, stars, sun, moon, planets, earth"
+      '1',
+      'Stars are wonderful',
+      'This page on astronomy is super useful',
+      'http://www.astronomy.com',
+      '2012-02-02',
+      'https://www.nasa.gov/sites/default/files/thumbnails/image/hs-2011-38-a-xlarge_web.jpg',
+      'astronomy, stars, sun, moon, planets, earth'
     );
 INSERT INTO resources (id, title, description, url, date_created, picture_url, tags) VALUES
     (
-      "2",
-      "Fountain pens are the best pens",
-      "Fountain pens are the best at writing calligraphy, and signing your autograph when you are famous",
-      "https://www.wonderpens.ca/",
-      "1996-03-10",
-      "https://cf1.s3.souqcdn.com/item/2017/03/24/22/30/19/06/item_XL_22301906_30112773.jpg",
-      "fountain pens, writing"
+      '2',
+      'Fountain pens are the best pens',
+      'Fountain pens are the best at writing calligraphy, and signing your autograph when you are famous',
+      'https://www.wonderpens.ca/',
+      '1996-03-10',
+      'https://cf1.s3.souqcdn.com/item/2017/03/24/22/30/19/06/item_XL_22301906_30112773.jpg',
+      'fountain pens, writing'
     );
 INSERT INTO resources (id, title, description, url, date_created, picture_url, tags) VALUES
     (
-      "3",
-      "Hiking trails in Toronto",
-      "Here are the best hiking trails that I found in and around Toronto",
-      "https://www.blogto.com/sports_play/2012/06/hiking_trails_in_and_around_toronto/",
-      "2002-08-10",
-      "https://c8234d680a5ae618106c-6b3bd0826ac1075e2d1b52b94a2e0f63.ssl.cf1.rackcdn.com/2625_5d8f4a53.jpg",
-      "hiking, exercise"
+      '3',
+      'Hiking trails in Toronto',
+      'Here are the best hiking trails that I found in and around Toronto',
+      'https://www.blogto.com/sports_play/2012/06/hiking_trails_in_and_around_toronto/',
+      '2002-08-10',
+      'https://c8234d680a5ae618106c-6b3bd0826ac1075e2d1b52b94a2e0f63.ssl.cf1.rackcdn.com/2625_5d8f4a53.jpg',
+      'hiking, exercise'
     );
 INSERT INTO resources (id, title, description, url, date_created, picture_url, tags) VALUES
     (
-      "4",
-      "Coding 101",
-      "This is the best website to get started on coding",
-      "https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics",
-      "2018-01-10",
-      "http://designcachegraphics.com/wp-content/uploads/2015/12/coding-1-1020x573.jpg",
-      "coding, javascript, html, css, code, mdn"
+      '4',
+      'Coding 101',
+      'This is the best website to get started on coding',
+      'https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics',
+      '2018-01-10',
+      'http://designcachegraphics.com/wp-content/uploads/2015/12/coding-1-1020x573.jpg',
+      'coding, javascript, html, css, code, mdn'
     );
 INSERT INTO resources (id, title, description, url, date_created, picture_url, tags) VALUES
     (
-      "5",
-      "Video games",
-      "The ultimate guide to the latest video games",
-      "https://guides.gamepressure.com/",
-      "2014-01-10",
-      "http://thoughtforyourpenny.com/wp-content/uploads/Video-Game-Controllers.jpg",
-      "video games, nintendo, playstation, xbox"
+      '5',
+      'Video games',
+      'The ultimate guide to the latest video games',
+      'https://guides.gamepressure.com/',
+      '2014-01-10',
+      'http://thoughtforyourpenny.com/wp-content/uploads/Video-Game-Controllers.jpg',
+      'video games, nintendo, playstation, xbox'
     );
 INSERT INTO resources (id, title, description, url, date_created, picture_url, tags) VALUES
     (
-      "6",
-      "Table Tennis Rocks",
-      "The ultimate guide to table tennis in Canada",
-      "http://ttcan.ca/",
-      "2016-02-10",
-      "https://www.tabletenniscoach.me.uk/wp-content/uploads/2017/06/table-tennis-serve.jpg",
-      "table tennis"
+      '6',
+      'Table Tennis Rocks',
+      'The ultimate guide to table tennis in Canada',
+      'http://ttcan.ca/',
+      '2016-02-10',
+      'https://www.tabletenniscoach.me.uk/wp-content/uploads/2017/06/table-tennis-serve.jpg',
+      'table tennis'
     );
 INSERT INTO resources (id, title, description, url, date_created, picture_url, tags) VALUES
     (
-      "7",
-      "Learn how to knit",
-      "The very best website to learn how to knit, I swear",
-      "https://www.loveknitting.com/us/how-to-knit",
-      "2015-02-10",
-      "https://cms-assets.tutsplus.com/uploads/users/40/syllabuses/585/preview_image/KnittingforBeginners.jpg",
-      "knitting, bored, things to do on a plane"
+      '7',
+      'Learn how to knit',
+      'The very best website to learn how to knit, I swear',
+      'https://www.loveknitting.com/us/how-to-knit',
+      '2015-02-10',
+      'https://cms-assets.tutsplus.com/uploads/users/40/syllabuses/585/preview_image/KnittingforBeginners.jpg',
+      'knitting, bored, things to do on a plane'
     );
 INSERT INTO resources (id, title, description, url, date_created, picture_url, tags) VALUES
     (
-      "8",
-      "Geocaching in Niagara Falls",
-      "This is the ultimate resource for geocaching in Niagara Falls!",
-      "https://www.niagaraparks.com/visit-niagara-parks/nature-activities/geocaching/",
-      "2019-02-10",
-      "https://cdn0.wideopenspaces.com/wp-content/uploads/2018/01/geocachingfeature1-630x339.jpg",
-      "geocaching niagara falls"
+      '8',
+      'Geocaching in Niagara Falls',
+      'This is the ultimate resource for geocaching in Niagara Falls!',
+      'https://www.niagaraparks.com/visit-niagara-parks/nature-activities/geocaching/',
+      '2019-02-10',
+      'https://cdn0.wideopenspaces.com/wp-content/uploads/2018/01/geocachingfeature1-630x339.jpg',
+      'geocaching niagara falls'
     );
 INSERT INTO resources (id, title, description, url, date_created, picture_url, tags) VALUES
     (
-      "9",
-      "Urban Splunking DUH",
-      "Umm hello urban splunking places in and around Milwaukee!",
-      "https://radiomilwaukee.org/story/community-stories/spelunking-20-little-milwaukee-landmarks/",
-      "2012-02-10",
-      "http://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Urban_Explorer_Hobart_CA_Edit.jpg/300px-Urban_Explorer_Hobart_CA_Edit.jpg",
-      "urban splunking, abandoned, trespassing"
+      '9',
+      'Urban Splunking DUH',
+      'Umm hello urban splunking places in and around Milwaukee!',
+      'https://radiomilwaukee.org/story/community-stories/spelunking-20-little-milwaukee-landmarks/',
+      '2012-02-10',
+      'http://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Urban_Explorer_Hobart_CA_Edit.jpg/300px-Urban_Explorer_Hobart_CA_Edit.jpg',
+      'urban splunking, abandoned, trespassing'
     );
 INSERT INTO resources (id, title, description, url, date_created, picture_url, tags) VALUES
     (
-      "10",
-      "Drone Racing ZOOM ZOOM",
-      "This is an awesome article on drone racing",
-      "https://www.newyorker.com/magazine/2018/02/05/the-trippy-high-speed-world-of-drone-racing",
-      "2015-02-10",
-      "https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2016/howmightdron.jpg",
-      "drone racing, tech"
+      '10',
+      'Drone Racing ZOOM ZOOM',
+      'This is an awesome article on drone racing',
+      'https://www.newyorker.com/magazine/2018/02/05/the-trippy-high-speed-world-of-drone-racing',
+      '2015-02-10',
+      'https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2016/howmightdron.jpg',
+      'drone racing, tech'
     );
 INSERT INTO resources (id, title, description, url, date_created, picture_url, tags) VALUES
     (
-      "11",
-      "Base Jumping!!!",
-      "Don't know what base jumping is? This page will teach you",
-      "https://www.tripsavvy.com/what-is-base-jumping-34497",
-      "2011-02-10",
-      "https://www.tripsavvy.com/thmb/6bMSL-Ge2MROfFdKTFlcCN-5ieY=/950x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-889748872-5b3e43fd46e0fb00375bd5af.jpg",
-      "base jumping, adrenaline, sky"
+      '11',
+      'Base Jumping!!!',
+      'Don\'t know what base jumping is? This page will teach you',
+      'https://www.tripsavvy.com/what-is-base-jumping-34497',
+      '2011-02-10',
+      'https://www.tripsavvy.com/thmb/6bMSL-Ge2MROfFdKTFlcCN-5ieY=/950x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-889748872-5b3e43fd46e0fb00375bd5af.jpg',
+      'base jumping, adrenaline, sky'
     );
 INSERT INTO resources (id, title, description, url, date_created, picture_url, tags) VALUES
     (
-      "12",
-      "Ultimage guide on Drones 2018",
-      "These are probably the best drones on the market today",
-      "https://www.cnet.com/topics/drones/products/",
-      "2018-02-10",
-      "https://media.wired.com/photos/59265687af95806129f4f16f/master/w_2400,c_limit/Drone-TA-674480931.jpg",
-      "drones, 2018"
+      '12',
+      'Ultimage guide on Drones 2018',
+      'These are probably the best drones on the market today',
+      'https://www.cnet.com/topics/drones/products/',
+      '2018-02-10',
+      'https://media.wired.com/photos/59265687af95806129f4f16f/master/w_2400,c_limit/Drone-TA-674480931.jpg',
+      'drones, 2018'
     );
 INSERT INTO resources (id, title, description, url, date_created, picture_url, tags) VALUES
     (
-      "13",
-      "Agricultural Drones",
-      "Farmers are using agricultural drones now as part of their process",
-      "https://www.technologyreview.com/s/526491/agricultural-drones/",
-      "2012-05-10",
-      "https://cdn.20m.es/img2/recortes/2017/09/01/533305-600-338.jpg",
-      "drones, agriculture, farming"
+      '13',
+      'Agricultural Drones',
+      'Farmers are using agricultural drones now as part of their process',
+      'https://www.technologyreview.com/s/526491/agricultural-drones/',
+      '2012-05-10',
+      'https://cdn.20m.es/img2/recortes/2017/09/01/533305-600-338.jpg',
+      'drones, agriculture, farming'
     );
