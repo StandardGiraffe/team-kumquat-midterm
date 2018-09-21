@@ -9,6 +9,32 @@
 //     })
 //   }
 
+
+//#####################
+//       LOGIN
+//#####################
+
+function login() {
+  $( "#login" ).on( "submit", function( event ) {
+    event.preventDefault();
+    let $error = $('#add_error');
+
+      console.log("Passed all error checks..")
+
+      //ASSIGNS login name to var ME
+      $.ajax('/api/users', {
+        data: $(this).serialize(),
+        method: 'POST'
+      })
+      $('#add-error').hide()
+      $( 'form' ).each(function() {    // clears the form after submitting
+        this.reset();
+      });
+      console.log('Successfully sent to users.js');
+  })
+}
+
+
 //#####################
 //       USERS
 //#####################

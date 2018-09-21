@@ -42,6 +42,12 @@ const navigationRoutes = require("./routes/navigation");
 
 
 
+//########################################
+// REQUIRE LOGIN INFORMATION
+//########################################
+
+const loginInfo = require("./scripts/loginInfo");
+
 
 //########################################
 // RUN/USE MIDDLEWARE
@@ -99,6 +105,8 @@ app.use("/api/navigation", navigationRoutes(knex));
 
 
 
+
+
 //########################################
 // LOAD PAGES
 //########################################
@@ -123,7 +131,6 @@ app.use("/api/navigation", navigationRoutes(knex));
     });
 
 });*/
-
 
 // Home page
 app.get("/", (req, res) => {
