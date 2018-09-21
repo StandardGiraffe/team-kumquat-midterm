@@ -74,6 +74,7 @@ function editProfile() {
       });
       console.log('Successfully sent to users.js');
     })
+}
 
 //#####################
 //     RESOURCES
@@ -169,22 +170,22 @@ function addLike() {
 
 
 // Search by TAGS
-function searchTags() {
-  $( "#search_resources" ).on( "submit", function( event ) {
-    console.log('Beginning of search Tags..')
-    event.preventDefault();
-    let $error = $('#add_error');
-  knex.select('*')
-    .from('resources')
-    .where('tags', 'ILIKE', '%topic%')
-    .asCallback(function(err, rows) {
-      if (err) return console.error(err);
-      console.log(`Loading resources into page..`);
-      loadResults(rows);
-      // knex.destroy();   // force closes the pooling
-    });
-  })
-}
+// //function searchTags() {
+//   $( "#search_tags" ).on( "submit", function( event ) {
+//     console.log('Beginning of search Tags..')
+//     event.preventDefault();
+//     let $error = $('#add_error');
+//   knex.select('*')
+//     .from('resources')
+//     .where('tags', 'ILIKE', '%topic%')
+//     .asCallback(function(err, rows) {
+//       if (err) return console.error(err);
+//       console.log(`Loading resources into page..`);
+//       loadResults(rows);
+//       // knex.destroy();   // force closes the pooling
+//     });
+//   })
+// }
 
 // Search by USERS
 function searchUsers() {
@@ -233,8 +234,8 @@ function escape(str) {
 $(document).ready(function() {
   loadUsers();
   addResources();
-  searchTags();
+  // searchTags();
   searchUsers();
   editProfile();
-  console.log("All functions on app.js were run")
-})
+//console.log("All functions on app.js were run");
+});

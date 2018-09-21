@@ -78,6 +78,27 @@ app.use("/api/urgency", urgencyRoutes(knex));
 app.use("/api/promotion", promotionRoutes(knex));
 app.use("/api/navigation", navigationRoutes(knex));
 
+/*function searchUsers(req, res) {
+
+  knex.select('*')
+    .from('users')
+    // .where('users', 'ILIKE', '%%')
+    .asCallback(function(err, rows) {
+      if (err) return console.error(err);
+      console.log(`Loading users into page..`);
+      // loadResults(rows);
+      console.log(rows);
+
+      let templatevars = {
+        results: rows
+      }
+      res.render("results", templatevars);
+
+      // knex.destroy();   // force closes the pooling
+    });
+}*/
+
+
 
 
 
@@ -85,6 +106,26 @@ app.use("/api/navigation", navigationRoutes(knex));
 // LOAD PAGES
 //########################################
 
+// Search by tag
+app.get("/search", (req, res) => {
+  //searchUsers(req, res)
+  console.log("You saw me.", req.query);
+  knex.select('*')
+    .from('users')
+    // .where('users', 'ILIKE', '%%')
+    .asCallback(function(err, rows) {
+      if (err) return console.error(err);
+      console.log(`Loading users into page..`);
+      // loadResults(rows);
+      console.log(rows);
+
+      let templatevars = {
+        results: rows
+      }
+  res.render("results", templatevars);
+    });
+
+});
 
 // Home page
 app.get("/", (req, res) => {
@@ -94,6 +135,10 @@ app.get("/", (req, res) => {
 // Login page
 app.get("/login", (req, res) => {
   res.render("login");
+});
+
+// Results page
+app.get("/results", (req, res) => {
 });
 
 // Registration page
@@ -115,6 +160,8 @@ app.get("/users/:id/new", (req, res) => {
 app.get("/users/:id/", (req, res) => {
   res.render("other_user_profile");
 });
+
+
 
 // // User Profile page
 // app.get("/:id", (req, res) => {
