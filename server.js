@@ -155,14 +155,16 @@ app.get("/edit/:id", (req, res) => {
 
 app.get("/new_resource", async (req, res) => {
 let kumquat = await grabity.grab("https://www.flickr.com");
-  let kumquatLoop = {}
-  for (let obj in kumquat) {
-    kumquatLoop += obj;
-  }
-  let templatevars = {
-    kumquat: kumquatLoop
-  }
+
+  let templatevars = {kumquat:kumquat}
+
   res.render("new_resource", templatevars);
+  console.log('kumquat', kumquat)
+  /*(async () => {
+ let it = await grabity.grabIt("https://www.flickr.com");
+
+ console.log(it);
+})();*/
 
 });
 
