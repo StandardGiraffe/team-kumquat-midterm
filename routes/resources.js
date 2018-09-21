@@ -25,7 +25,7 @@ module.exports = (knex) => {
         url: req.body.url,
         description: req.body.description,
         date_created: currentDate,
-        picture_url: "https://pm1.narvii.com/6371/75947ddf484b09046d72a511864761f692e9a27e_hq.jpg"
+        picture_url: "https://pm1.narvii.com/6371/75947ddf484b09046d72a511864761f692e9a27e_hq.jpg",
         tags: req.body.tag
       })
       .then((rows) => {

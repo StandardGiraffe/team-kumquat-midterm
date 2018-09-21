@@ -30,10 +30,10 @@ const usersRoutes = require("./routes/users");
 const resourcesRoutes = require("./routes/resources");
 const commentsRoutes = require("./routes/comments");
 const likesRoutes = require("./routes/likes");
-const tagsRoutes = require("./routes/tags");
 const ratingsRoutes = require("./routes/ratings");
 const urgencyRoutes = require("./routes/urgency");
 const promotionRoutes = require("./routes/promotion");
+const navigationRoutes = require("./routes/navigation");
 
 
 
@@ -67,10 +67,10 @@ app.use("/api/users", usersRoutes(knex));
 app.use("/api/resources", resourcesRoutes(knex));
 app.use("/api/comments", commentsRoutes(knex));
 app.use("/api/likes", likesRoutes(knex));
-app.use("/api/tags", tagsRoutes(knex));
 app.use("/api/ratings", ratingsRoutes(knex));
 app.use("/api/urgency", urgencyRoutes(knex));
 app.use("/api/promotion", promotionRoutes(knex));
+app.use("/api/navigation", navigationRoutes(knex));
 
 
 //########################################

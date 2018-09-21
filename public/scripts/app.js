@@ -26,6 +26,7 @@ function loadUsers() {
 }
 
 
+
 //#####################
 //     RESOURCES
 //#####################
@@ -118,7 +119,7 @@ function addResources() {
 // Search by TAGS
 function searchTags() {
   $( "#search_resources" ).on( "submit", function( event ) {
-    console.log('Beginning of add entry..')
+    console.log('Beginning of search Tags..')
     event.preventDefault();
     let $error = $('#add_error');
   knex.select('*')
@@ -130,19 +131,25 @@ function searchTags() {
       loadResults(rows);
       // knex.destroy();   // force closes the pooling
     });
+  })
 }
 
 // Search by USERS
 function searchUsers() {
+  $( "#search_users" ).on( "submit", function( event ) {
+    console.log('Beginning of search Tags..')
+    event.preventDefault();
+    let $error = $('#add_error');
   knex.select('*')
     .from('users')
-    .where('tags', 'ILIKE', '%topic%')
+    .where('users', 'ILIKE', '%%')
     .asCallback(function(err, rows) {
       if (err) return console.error(err);
-      console.log(`Loading resources into page..`);
+      console.log(`Loading users into page..`);
       loadResults(rows);
       // knex.destroy();   // force closes the pooling
     });
+  })
 }
 
 
@@ -151,10 +158,12 @@ function searchUsers() {
 //#####################
 
 function loadResults(results) {
-  results.forEach(function(tweet) {
-    $(".resource_field").prepend(createTweetElement(tweet));
+  results.forEach(function(result) {
+    $(".card-body").append(result);
   });
 }
+
+
 
 
 
@@ -172,5 +181,7 @@ function escape(str) {
 $(document).ready(function() {
   loadUsers();
   addResources();
+  searchTags();
+  searchUsers();
   console.log("All functions on app.js were run")
 })
