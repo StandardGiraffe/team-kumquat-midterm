@@ -145,8 +145,12 @@ app.get("/edit/:id", (req, res) => {
 });
 
 // Add new resource
-app.get("/users/:id/new", (req, res) => {
-  res.render("new_resource");
+// app.get("/users/:id/new", (req, res) => {
+//   res.render("new_resource");
+// });
+
+app.get("/new_resource", (req, res) => {
+  res.render("new_resource")
 });
 
 // Other user's Profile
