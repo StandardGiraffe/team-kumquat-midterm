@@ -124,6 +124,19 @@ app.use("/api/navigation", navigationRoutes(knex));
 
 });*/
 
+const findResourceById = async function (id) {
+
+  return await knex('resources').where('id', id)
+}
+  //     .asCallback(function(err, rows) {
+  //       if (err) return console.error(err);
+  //       console.log(`Loading users into page..`);
+  //       // console.log(rows[0]);
+  //       return rows[0];
+  //       });
+  // }
+
+// console.log(findResourceById(1));
 
 // Home page
 app.get("/", (req, res) => {
@@ -147,6 +160,19 @@ app.get("/register", (req, res) => {
 app.get("/edit/:id", (req, res) => {
   res.render("edit_user_profile");
 });
+
+// Individual resource page
+app.get("/resource/:resourceid", async (req, res) => {
+  let resourceRecord = await findResourceById(req.params.resourceid)
+  console.log(resourceRecord[0]);
+
+  let resourcePicture = await grabity.grab(resourceRecord[0].url);
+  let templatevars = {
+    picture: resourcePicture["og:image"],
+    kumquat: resourceRecord[0]
+  }
+  res.render("view_resource", templatevars);
+})
 
 // Add new resource
 // app.get("/users/:id/new", (req, res) => {
