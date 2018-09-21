@@ -170,7 +170,8 @@ let kumquat = await grabity.grab("https://www.flickr.com");
 
 
 app.post("/addNewKumquat", (req,res) => {
-  res.send(req.body["kumquatUrl"])
+  res.send(req.body["kumquatUrl"] + req.body["kumquatUrlDiscription"])
+
 })
 
 
