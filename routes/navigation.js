@@ -19,10 +19,10 @@ module.exports = (knex) => {
   //   });
   // });
 
-  // router.get("/login", (req, res) => {
-  //   console.log("I'm trying to render the login page")
-  //   res.render("login");
-  // })
+  router.get("/login", (req, res) => {
+    console.log("I'm trying to render the login page")
+    res.render("login");
+  })
 
 
 

@@ -37,6 +37,12 @@ const navigationRoutes = require("./routes/navigation");
 
 
 
+//########################################
+// REQUIRE LOGIN INFORMATION
+//########################################
+
+const loginInfo = require("./scripts/loginInfo");
+
 
 //########################################
 // RUN/USE MIDDLEWARE
@@ -73,11 +79,12 @@ app.use("/api/promotion", promotionRoutes(knex));
 app.use("/api/navigation", navigationRoutes(knex));
 
 
+
+
 //########################################
 // LOAD PAGES
 //########################################
 
-var user_id = Rocker126
 
 // Home page
 app.get("/", (req, res) => {
