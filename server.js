@@ -19,7 +19,11 @@ const morgan = require('morgan');
 const knexLogger = require('knex-logger');
 const grabity = require("grabity");
 
+let kumquat = (async () => {
+  let tags = await grabity.grab("https://www.flickr.com");
 
+  return tags;
+})
 
 
 //########################################
@@ -100,7 +104,7 @@ app.use("/api/navigation", navigationRoutes(knex));
 //########################################
 
 // Search by tag
-app.get("/search", (req, res) => {
+/*app.get("/search", (req, res) => {
   //searchUsers(req, res)
   console.log("You saw me.", req.query);
   knex.select('*')
@@ -118,7 +122,7 @@ app.get("/search", (req, res) => {
   res.render("results", templatevars);
     });
 
-});
+});*/
 
 
 // Home page
@@ -132,8 +136,7 @@ app.get("/login", (req, res) => {
 });
 
 // Results page
-app.get("/results", (req, res) => {
-});
+app.get("/results", (req, res) => {});
 
 // Registration page
 app.get("/register", (req, res) => {
@@ -150,9 +153,20 @@ app.get("/edit/:id", (req, res) => {
 //   res.render("new_resource");
 // });
 
-app.get("/new_resource", (req, res) => {
-  res.render("new_resource")
+app.get("/new_resource", async (req, res) => {
+let kumquat = await grabity.grab("https://www.flickr.com");
+  let kumquatLoop = {}
+  for (let obj in kumquat) {
+    kumquatLoop += obj;
+  }
+  let templatevars = {
+    kumquat: kumquatLoop
+  }
+  res.render("new_resource", templatevars);
+
 });
+
+
 
 // Other user's Profile
 app.get("/users/:id/", (req, res) => {
