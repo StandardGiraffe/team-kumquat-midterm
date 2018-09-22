@@ -166,7 +166,24 @@ app.get("/search", (req, res) => {
   res.render("results", templatevars);
     });
 
-});*/
+});
+
+// Returns an array with a single object, being the resources table object from the database.  Remember to access the result at [0]
+const findResourceById = async function (resourceId) {
+  return await knex('resources').where('id', resourceId);
+}
+
+
+// Returns an array with a single object, being the users table object from the database.  Remember to access the result at [0].
+const findUserById = async function (userId) {
+  return await knex('users').where('id', userId);
+}
+
+// Returns an array of objects containing the resources associated with the passed userID. Iterate through the array to access them.
+const findResourcesByUser = async function (userId) {
+  return await knex.select("*").from("resources").join("users", "users.id", "=", "resources.user_id").where('users.id', userId);
+}
+
 
 // Home page
 app.get("/", (req, res) => {
@@ -224,6 +241,26 @@ app.post("/edit", (req, res) => {
         res.redirect("index", templatevars);
     });
 })
+
+// Individual resource page
+app.get("/resource/:resourceid", async (req, res) => {
+  let resourceRecord = await findResourceById(req.params.resourceid);
+  console.log(resourceRecord[0]);
+
+  let resourcePicture = await grabity.grab(resourceRecord[0].url);
+  let templatevars = {
+    picture: resourcePicture["og:image"],
+    kumquat: resourceRecord[0]
+  }
+  res.render("view_resource", templatevars);
+})
+
+// Testing Porp: User by ID
+app.get("/user/:userId", async (req, res) => {
+  let userRecord = await findUserById(req.params.userId);
+  console.log(userRecord[0]);
+})
+
 
 // Add new resource
 // app.get("/users/:id/new", (req, res) => {
