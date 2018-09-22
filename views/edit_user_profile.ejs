@@ -25,10 +25,17 @@
         <%- include("partials/_header"); %>
       </header>
 
+        <form class="edit-profile" method="POST" action="/edit">
+          <span>Edit your profile:</span>
+          <input type="text" name="username" placeholder="<%=userInfo["name"]%>"/>
+          <input type="email" name="email" placeholder="<%=userInfo["email"]%>"/>
+          <input type="password" name="password" placeholder="Enter a new password"/>
+          <input type="url" name="avatar" placeholder="Enter new avatar url"/>
+          <input type="text" name="bio" placeholder="<%=userInfo["bio"]%>"/>
+          <button>login</button>
+        </form>
 
-
-
-
+        <img src="<%=userInfo["avatar_url"]%>">
 
 
   </div>
