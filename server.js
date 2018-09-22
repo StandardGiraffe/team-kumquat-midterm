@@ -147,21 +147,40 @@ app.post("/login", (req, res) => {
 
 
 
-// Search by user
+// // Search by user
+// app.get("/search", (req, res) => {
+//   //searchUsers(req, res)
+//   console.log("You saw me.", req.query);
+//   knex.select('*')
+//     .from('users')
+//     // .where('users', 'ILIKE', '%%')
+//     .asCallback(function(err, rows) {
+//       if (err) return console.error(err);
+//       console.log(`Loading users into page..`);
+//       // loadResults(rows);
+//       console.log(rows);
+
+//       let templatevars = {
+//         results: rows
+//       }
+//   res.render("results", templatevars);
+//     });
+
+// });
+
+// Search by TAG
 app.get("/search", (req, res) => {
-  //searchUsers(req, res)
-  console.log("You saw me.", req.query);
-  knex.select('*')
-    .from('users')
-    // .where('users', 'ILIKE', '%%')
+  console.log("req.query is: ", req.query);
+  console.log("req.query.body is: ", req.query.body);
+  console.log("req.query['search_tags'] is: ", req.query['search_tags']);
+  knex.raw(`select * from resources where tags ilike '%${req.query['search_tags']}%';`)
     .asCallback(function(err, rows) {
       if (err) return console.error(err);
-      console.log(`Loading users into page..`);
-      // loadResults(rows);
-      console.log(rows);
+      console.log("rows.rows is: ");
+      console.log(rows.rows)
 
       let templatevars = {
-        results: rows
+        results: rows.rows
       }
   res.render("results", templatevars);
     });
@@ -317,6 +336,10 @@ app.post("/new_resource", async (req,res) => {
 
 // Other user's Profile
 app.get("/users/:id/", (req, res) => {
+
+
+
+
   res.render("other_user_profile");
 });
 

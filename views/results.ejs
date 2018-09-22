@@ -23,15 +23,29 @@
       <header>
         <%- include("partials/_header"); %>
       </header>
-      <p> This is results. </p>
+      <p> Search results for <%- searchTopic %> </p>
+      <div class="row">
+      <ul>
+            <% for (result in results) { %>
+              <% if (urls[key].userID === user_id.id) { %>
+
+                <%- include("partials/_header"); %>
+
+                <li><%= `${key}: ${urls[key].website}` %>
+                <a href="/urls/<%=key%>">Edit</a>
+                <form method="POST" action="/urls/<%=key%>/delete">
+                  <button>Delete</button>
+                </form></li>
+              <% } %>
+            <% }; %><br>
+          <% } %>
 
 
-<%= results %>
-<%  for (result of results) {   %>
-<li> <%=  result["name"]     %> </li>
-<% } %>
+
+  </ul>
 
 
+      </div>
 
   </div>
   </body>
