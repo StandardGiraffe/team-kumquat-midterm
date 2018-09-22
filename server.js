@@ -283,15 +283,21 @@ let kumquat = await grabity.grab("https://www.flickr.com");
 });
 
 
-app.post("/addNewKumquat", (req,res) => {
+app.post("/addNewKumquat", async (req,res) => {
   let currentDate = new Date();
+  //let picture = await grabity.grab(req.body['url']);
+let kumquat = await grabity.grab(req.body['url']);
+
+  let pictureURL = kumquat["og:image"];
   knex("resources")
     .insert({
-      title: req.body.title,
-      url: req.body.url,
-      description: req.body.description,
+      title: req.body['title'],
+      url: req.body['url'],
+      description: req.body['description'],
       date_created: currentDate,
-      tags: req.body.tag
+      tags: req.body['tags'],
+      picture_url: pictureURL,
+      user_id: 5
     })
     .then((rows) => {
       console.log(rows)
@@ -301,7 +307,7 @@ app.post("/addNewKumquat", (req,res) => {
     })
 
 
-  res.send(req.body["kumquatUrl"] + req.body["kumquatUrlDiscription"])
+  // res.send(req.body["kumquatUrl"] + req.body["kumquatUrlDiscription"])
 
 
 })
