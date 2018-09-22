@@ -124,19 +124,22 @@ app.use("/api/navigation", navigationRoutes(knex));
 
 });*/
 
-const findResourceById = async function (id) {
-
-  return await knex('resources').where('id', id)
+// Returns an array with a single object, being the resources table object from the database.  Remember to access the result at [0]
+const findResourceById = async function (resourceId) {
+  return await knex('resources').where('id', resourceId);
 }
-  //     .asCallback(function(err, rows) {
-  //       if (err) return console.error(err);
-  //       console.log(`Loading users into page..`);
-  //       // console.log(rows[0]);
-  //       return rows[0];
-  //       });
-  // }
 
-// console.log(findResourceById(1));
+
+// Returns an array with a single object, being the users table object from the database.  Remember to access the result at [0].
+const findUserById = async function (userId) {
+  return await knex('users').where('id', userId);
+}
+
+// Returns an array of objects containing the resources associated with the passed userID. Iterate through the array to access them.
+const findResourcesByUser = async function (userId) {
+  return await knex.select("*").from("resources").join("users", "users.id", "=", "resources.user_id").where('users.id', userId);
+}
+
 
 // Home page
 app.get("/", (req, res) => {
@@ -163,7 +166,7 @@ app.get("/edit/:id", (req, res) => {
 
 // Individual resource page
 app.get("/resource/:resourceid", async (req, res) => {
-  let resourceRecord = await findResourceById(req.params.resourceid)
+  let resourceRecord = await findResourceById(req.params.resourceid);
   console.log(resourceRecord[0]);
 
   let resourcePicture = await grabity.grab(resourceRecord[0].url);
@@ -173,6 +176,13 @@ app.get("/resource/:resourceid", async (req, res) => {
   }
   res.render("view_resource", templatevars);
 })
+
+// Testing Porp: User by ID
+app.get("/user/:userId", async (req, res) => {
+  let userRecord = await findUserById(req.params.userId);
+  console.log(userRecord[0]);
+})
+
 
 // Add new resource
 // app.get("/users/:id/new", (req, res) => {
