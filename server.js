@@ -279,30 +279,30 @@ app.get("/user/:userId", async (req, res) => {
 // });
 
 app.get("/new_resource", async (req, res) => {
-let kumquat = await grabity.grab("https://www.flickr.com");
-
-  let templatevars = {kumquat:kumquat}
-
-  res.render("new_resource", templatevars);
-  console.log('kumquat', kumquat)
+  // Testing grabity on page
+  // let kumquat = await grabity.grab("https://www.flickr.com");
+  // let templatevars = {kumquat:kumquat}
+  res.render("new_resource");
   /*(async () => {
- let it = await grabity.grabIt("https://www.flickr.com");
-
- console.log(it);
-})();*/
-
+    let it = await grabity.grabIt("https://www.flickr.com");
+    console.log(it);
+  })();*/
 });
 
 
-app.post("/addNewKumquat", (req,res) => {
+app.post("/new_resource", async (req,res) => {
   let currentDate = new Date();
+  let kumquat = await grabity.grab(req.body['url']);
+  let pictureURL = kumquat["og:image"];
   knex("resources")
     .insert({
-      title: req.body.title,
-      url: req.body.url,
-      description: req.body.description,
+      title: req.body['title'],
+      url: req.body['url'],
+      description: req.body['description'],
       date_created: currentDate,
-      tags: req.body.tag
+      tags: req.body['tags'],
+      picture_url: pictureURL,
+      user_id: 5
     })
     .then((rows) => {
       console.log(rows)
@@ -310,11 +310,7 @@ app.post("/addNewKumquat", (req,res) => {
     .catch(function(err) {
       console.error(err);
     })
-
-
-  res.send(req.body["kumquatUrl"] + req.body["kumquatUrlDiscription"])
-
-
+  res.redirect("/users/5");
 })
 
 
