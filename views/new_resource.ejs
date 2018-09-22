@@ -25,10 +25,13 @@
         <%- include("partials/_header"); %>
       </header>
 
-<form>
-    Enter your Komquat url here: <input>
-
-
+<form name="addNewKumquat" method="POST" action="/addNewKumquat">
+    Enter your Kumquat url and discription here:<br>
+    <input type = "text" name ="discription">
+    <input type = "text" name ="tags">
+    <input type = "text" name ="title">
+    <input type="submit" value="Add Kumquat" >
+    <textarea name="discription" cols="45" rows="8"></textarea>
 
 </form>
 
