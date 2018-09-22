@@ -25,24 +25,21 @@
       </header>
       <p> Search results for <%- searchTopic %> </p>
       <div class="row">
-      <ul>
-            <% for (result in results) { %>
-              <% if (urls[key].userID === user_id.id) { %>
 
-                <%- include("partials/_header"); %>
-
-                <li><%= `${key}: ${urls[key].website}` %>
-                <a href="/urls/<%=key%>">Edit</a>
-                <form method="POST" action="/urls/<%=key%>/delete">
-                  <button>Delete</button>
-                </form></li>
-              <% } %>
-            <% }; %><br>
-          <% } %>
+        <% for single_result of searchResults {%>
+          <% let kumquat = single_result.kumquat;%>
+          <% let user = single_result.user;%>
+          <% console.log("Result title is:", kumquat['url']);%>
+          <%- include("partials/_resource"); %>
+        <% } %>
 
 
 
-  </ul>
+
+
+
+
+
 
 
       </div>

@@ -1,0 +1,20 @@
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="card my-1">
+            <a href="<%- kumquat[0].url%>">
+              <img class="card-img-top" src="<%- kumquat[0].picture_url %>" alt="Card image cap">
+            </a>
+            <div class="card-body text-center">
+              <a href="<%- kumquat[0].url%>">
+                <h3 class="card-title"><%- kumquat[0].title %></h5>
+                <p class="card-text"><%- kumquat[0].description %></p>
+              </a>
+              <br>
+            </div>
+            <div class="card-footer text-muted text-center resource_attributes">
+              <p class="card-text"><a href="/search/<%- kumquat[0].tags%>"><i class="fas fa-tag"></i> <%- kumquat[0].tags%></a></p>
+              <p class="card-text"><a href="/user/<%- user.id %>"><i class="far fa-user"></i> <%- user['name'] %></a></p>
+              <p class="card-text"><i class="fas fa-brain"></i> <%- kumquat[0].likes%> | <i class="far fa-star"></i> <%- kumquat[0].rating%></p>
+            </div>
+          </div>
+        </div>
+        <%=console.log("partial says, title is:", user)%>

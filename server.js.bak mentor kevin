@@ -288,18 +288,6 @@ const getResourceWithAllAssociatedMeta = async function (resourceid) {
 }
 
 
-const getResourceWithAllAssociatedMeta = async function (resourceid) {
-  let userName = await findUserByResource(resourceid);
-  let resourceRecord = await findResourceById(resourceid);
-
-  return new Promise(function(resolve, reject) {
-    resolve({
-      user: userName.rows[0],
-      kumquat: resourceRecord[0]
-    });
-  });
-}
-
 // Individual resource page
 // app.get("/resource/:resourceid", async (req, res) => {
 //   let userName = await findUserByResource(req.params.resourceid);
