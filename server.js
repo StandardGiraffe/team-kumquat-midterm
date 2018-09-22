@@ -184,6 +184,13 @@ const findResourcesByUser = async function (userId) {
   return await knex.select("*").from("resources").join("users", "users.id", "=", "resources.user_id").where('users.id', userId);
 }
 
+// Returns an array of objects containing the resources associated with the passed userID. Iterate through the array to access them.
+const findUserByResource = async function (resourceId) {
+  return await knex.raw(`SELECT users.name FROM users JOIN resources ON resources.user_id=users.id WHERE resources.id = ${resourceId}`);
+  // return await knex.select("name").from("users").join("resources", "users.id", "=", "resources.user_id").where('resources.user_id', resourceId);
+}
+
+
 
 // Home page
 app.get("/", (req, res) => {
@@ -244,12 +251,16 @@ app.post("/edit", (req, res) => {
 
 // Individual resource page
 app.get("/resource/:resourceid", async (req, res) => {
+  let userName = await (findUserByResource(req.params.resourceid));
   let resourceRecord = await findResourceById(req.params.resourceid);
+  console.log("Username is:", userName);
+
   console.log(resourceRecord[0]);
 
   let resourcePicture = await grabity.grab(resourceRecord[0].url);
   let templatevars = {
     picture: resourcePicture["og:image"],
+    user: userName.rows[0].name,
     kumquat: resourceRecord[0]
   }
   res.render("view_resource", templatevars);
