@@ -25,18 +25,24 @@
         <%- include("partials/_header"); %>
       </header>
 
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="<%- picture %>" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title"><%- kumquat.title %></h5>
-          <p class="card-text"><%- kumquat.description %></p>
-          <p class="card-text"><%- kumquat.tags%></p>
-          <p class="card-text">User: <%- user %></p>
-          <a href="<%- kumquat.url%>" class="btn btn-primary">Visit</a>
+      <div class="row">
+        <div class="card col-lg-3 col-md-6 col-sm-12" style="m-3;">
+          <a href="<%- kumquat.url%>">
+            <img class="card-img-top" src="<%- picture %>" alt="Card image cap">
+          </a>
+          <div class="card-body text-center">
+            <a href="<%- kumquat.url%>">
+              <h5 class="card-title"><%- kumquat.title %></h5>
+              <p class="card-text"><%- kumquat.description %></p>
+            </a>
+            <br>
+            <p class="card-text"><a href="/search/<%- kumquat.tags%>"><i class="fas fa-tags"></i> <%- kumquat.tags%></a></p>
+            <p class="card-text"><a href="/user/<%- user.id %>"><i class="far fa-user"></i> <%- user.name %></a></p>
+            <a href="<%- kumquat.url%>" class="btn btn-primary">Visit</a>
 
+          </div>
         </div>
       </div>
-
 
 
 
