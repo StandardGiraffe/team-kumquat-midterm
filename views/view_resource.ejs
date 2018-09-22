@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
+    <title>Resource: <%- kumquat.title %></title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -20,23 +20,19 @@
   </head>
 
   <body>
-    <div class = "containter">
+    <div class = "container">
       <header>
         <%- include("partials/_header"); %>
       </header>
 
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="<%- picture %>" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title"><%- kumquat.title %></h5>
-          <p class="card-text"><%- kumquat.description %></p>
-          <p class="card-text"><%- kumquat.tags%></p>
-          <p class="card-text">User: <%- user %></p>
-          <a href="<%- kumquat.url%>" class="btn btn-primary">Visit</a>
+      <div class="row">
 
-        </div>
+        <%- include("partials/_resource"); %>
+        <%- include("partials/_resource"); %>
+        <%- include("partials/_resource"); %>
+        <%- include("partials/_resource"); %>
+
       </div>
-
 
 
 
