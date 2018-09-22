@@ -178,16 +178,11 @@ app.get("/search", (req, res) => {
       if (err) return console.error(err);
       // console.log("rows.rows is: ");
       // console.log(rows.rows)
-      /*
-
-
-      */
-
-      let single_result = await getResourceWithAllAssociatedMeta(rows[0].id)
-
 
       let templatevars = {
-        searchResults: [single_result]
+        kumquat: rows.rows,
+        searchTopic: req.query['search_tags'],
+        user: "Raymond"
       }
   res.render("results", templatevars);
     });
@@ -275,51 +270,20 @@ app.post("/edit", (req, res) => {
     });
 })
 
-const getResourceWithAllAssociatedMeta = async function (resourceid) {
-  let userName = await findUserByResource(resourceid);
-  let resourceRecord = await findResourceById(resourceid);
-
-  return new Promise(function(resolve, reject) {
-    resolve({
-      user: userName.rows[0],
-      kumquat: resourceRecord[0]
-    });
-  });
-}
-
-
-const getResourceWithAllAssociatedMeta = async function (resourceid) {
-  let userName = await findUserByResource(resourceid);
-  let resourceRecord = await findResourceById(resourceid);
-
-  return new Promise(function(resolve, reject) {
-    resolve({
-      user: userName.rows[0],
-      kumquat: resourceRecord[0]
-    });
-  });
-}
-
 // Individual resource page
-// app.get("/resource/:resourceid", async (req, res) => {
-//   let userName = await findUserByResource(req.params.resourceid);
-//   let resourceRecord = await findResourceById(req.params.resourceid);
-
-//   console.log("userName", userName);
-//   console.log("resourceRecord", resourceRecord[0]);
-
-//   let resourcePicture = await grabity.grab(resourceRecord[0].url);
-//   let templatevars = {
-//     picture: resourcePicture["og:image"],
-//     user: userName.rows[0],
-//     kumquat: resourceRecord[0]
-//   }
-//   console.log("templatevars is:", templatevars);
-//   res.render("view_resource", templatevars);
-// })
-
 app.get("/resource/:resourceid", async (req, res) => {
-  let templatevars = await getResourceWithAllAssociatedMeta(req.params.resourceid);
+  let userName = await (findUserByResource(req.params.resourceid));
+  let resourceRecord = await findResourceById(req.params.resourceid);
+  console.log("Username is:", userName);
+
+  console.log(resourceRecord[0]);
+
+  let resourcePicture = await grabity.grab(resourceRecord[0].url);
+  let templatevars = {
+    picture: resourcePicture["og:image"],
+    user: userName.rows[0],
+    kumquat: resourceRecord[0]
+  }
   res.render("view_resource", templatevars);
 })
 

@@ -168,32 +168,6 @@ app.post("/login", (req, res) => {
 
 // });
 
-// Search by TAG
-app.get("/search", (req, res) => {
-  // console.log("req.query is: ", req.query);
-  // console.log("req.query.body is: ", req.query.body);
-  // console.log("req.query['search_tags'] is: ", req.query['search_tags']);
-  knex.raw(`select * from resources where tags ilike '%${req.query['search_tags']}%';`)
-    .asCallback(function(err, rows) {
-      if (err) return console.error(err);
-      // console.log("rows.rows is: ");
-      // console.log(rows.rows)
-      /*
-
-
-      */
-
-      let single_result = await getResourceWithAllAssociatedMeta(rows[0].id)
-
-
-      let templatevars = {
-        searchResults: [single_result]
-      }
-  res.render("results", templatevars);
-    });
-
-});
-
 // Returns an array with a single object, being the resources table object from the database.  Remember to access the result at [0]
 const findResourceById = async function (resourceId) {
   return await knex('resources').where('id', resourceId);
@@ -216,6 +190,39 @@ const findUserByResource = async function (resourceId) {
   // return await knex.select("name").from("users").join("resources", "users.id", "=", "resources.user_id").where('resources.user_id', resourceId);
 }
 
+const handleResourceWithMeta = function(resourceId, cb) {
+  return knex.raw(`select * from resources join users on resources.user_id = users.id where resources.id = ${resourceId}`).asCallback(function(err, rows) {
+    if (err) return console.error(err);
+    cb(rows.rows);
+  });
+}
+
+const handleResourcesWithMeta = function(tags, cb) {
+  return knex.raw(`select * from resources join users on resources.user_id = users.id where tags ilike '%${tags}%'`).asCallback(function(err, rows) {
+    if (err) return console.error(err);
+    cb(rows.rows);
+  });
+}
+
+const getResourceWithAllAssociatedMeta = async function (resourceid) {
+  let userName = await findUserByResource(resourceid);
+  let resourceRecord = await findResourceById(resourceid);
+
+  return new Promise(function(resolve, reject) {
+    resolve({
+      user: userName.rows[0],
+      kumquat: resourceRecord[0]
+    });
+  });
+}
+
+// Search by TAG
+app.get("/search", (req, res) => {
+  handleResourcesWithMeta(req.query['search_tags'], function(rows) {
+    console.log("data: ", rows);
+    res.render("results", {data: rows});
+  });
+});
 
 
 // Home page
@@ -275,30 +282,6 @@ app.post("/edit", (req, res) => {
     });
 })
 
-const getResourceWithAllAssociatedMeta = async function (resourceid) {
-  let userName = await findUserByResource(resourceid);
-  let resourceRecord = await findResourceById(resourceid);
-
-  return new Promise(function(resolve, reject) {
-    resolve({
-      user: userName.rows[0],
-      kumquat: resourceRecord[0]
-    });
-  });
-}
-
-
-const getResourceWithAllAssociatedMeta = async function (resourceid) {
-  let userName = await findUserByResource(resourceid);
-  let resourceRecord = await findResourceById(resourceid);
-
-  return new Promise(function(resolve, reject) {
-    resolve({
-      user: userName.rows[0],
-      kumquat: resourceRecord[0]
-    });
-  });
-}
 
 // Individual resource page
 // app.get("/resource/:resourceid", async (req, res) => {
@@ -319,8 +302,15 @@ const getResourceWithAllAssociatedMeta = async function (resourceid) {
 // })
 
 app.get("/resource/:resourceid", async (req, res) => {
-  let templatevars = await getResourceWithAllAssociatedMeta(req.params.resourceid);
-  res.render("view_resource", templatevars);
+  handleResourceWithMeta(req.params.resourceid, function(rows) {
+    let templatevars = {
+      kumquat: rows[0]
+    }
+    res.render("view_resource", templatevars);
+  })
+
+  // let templatevars = await getResourceWithAllAssociatedMeta(req.params.resourceid);
+  // res.render("view_resource", templatevars);
 })
 
 // Testing Porp: User by ID

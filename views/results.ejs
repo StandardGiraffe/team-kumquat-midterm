@@ -23,13 +23,10 @@
       <header>
         <%- include("partials/_header"); %>
       </header>
-      <p> Search results for <%- searchTopic %> </p>
       <div class="row">
 
-        <% for single_result of searchResults {%>
-          <% let kumquat = single_result.kumquat;%>
-          <% let user = single_result.user;%>
-          <% console.log("Result title is:", kumquat['url']);%>
+        <% for (kumquat of data) {%>
+
           <%- include("partials/_resource"); %>
         <% } %>
 
