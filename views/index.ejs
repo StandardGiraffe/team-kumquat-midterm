@@ -16,81 +16,30 @@
 
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <!-- <script type="text/javascript" src="/scripts/app.js"></script> -->
   </head>
 
   <body>
-    <!-- <form action="/" method="POST">
-      <input name="title" id="title">
-      <input name="url" id="url">
-      <input name="tag" id="tag">
-      <input name="description" id="description">
-      <input type="submit" name="add_entry" id="add_entry"> -->
 
-    </form>
     <div class = "container mb-5">
       <header>
         <%- include("partials/_header"); %>
       </header>
 
-
-      <!-- ######################################################################
-      User profile display
-      ###################################################################### -->
-      <div class="jumbotron" id="user_profile">
-
-        <!-- ALFRED: users.handle -->
-        <h1 class="display-4">[User's Name]</h1>
-
-        <!-- ALFRED: users.bio -->
-        <p class="lead">This is a small bit of self description about how cool I am.  Look at me go.  Is this wrapping?  Who knows?! </p>
-
-        <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-        </p>
+      <div class="jumbotron">
+        <h1 class="display-4">Howdy, <%- data[0].name %>!</h1>
+        <h1 class="display-5">Learn you good!  Here's yer stuff:</h1>
       </div>
 
-      <!-- ######################################################################
-      Resources on display
-      ###################################################################### -->
-      <div class="resource_field">
+      <div class="card-deck">
+        <div id="search_results" class="row">
 
-        <div class="row">
-            <div class="col-4">
-              <div class="card">
-                  <div class="card-body text-center">
-  <!-- ++++++++++++++++ALFRED resources.picture_url ++++++++++++++++++++++++ -->
-                      <img src="http://philomathy.org/wp-content/uploads/2016/10/Endless-Forms-Most-Battleful-Santiago-Sanchez-300x293.gif" class = "resource_picture">
+          <% for (kumquat of data) {%>
 
-
-
-                    <!-- ALFRED: resources.title -->
-                    <h5 class="card-title">Resource Name</h5>
-                      <button> </button>
-
-                    <p class="card-text">Some quick example text to build on the card title</p>
-                    <a href="#" class="card-link">Another link</a>
-                  </div>
-              </div>
-          </div>
-
+            <%- include("partials/_resource"); %>
+          <% } %>
         </div>
-
       </div>
 
 
-    <!-- <h1>Hello World!</h1>
-    <form id="add_entry" action="/" method="POST">
-      <input name="title" id="title">
-      <input name="url" id="url">
-      <input name="tag" id="tag">
-      <input name="description" id="description">
-      <input type="submit" name="add_entry" >
-    </form> -->
-
-
-
-    </ul>
-  </div>
   </body>
 </html>

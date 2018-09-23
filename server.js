@@ -204,6 +204,14 @@ const handleResourcesWithMeta = function(tags, cb) {
   });
 }
 
+const getResourcesByUser = function(userId, cb) {
+  return knex.raw(`select * from resources join users on resources.user_id = users.id where users.id = '${userId}'`).asCallback(function(err, rows) {
+    if (err) return console.error(err);
+    cb(rows.rows);
+  });
+}
+
+
 // const getResourceWithAllAssociatedMeta = async function (resourceid) {
 //   let userName = await findUserByResource(resourceid);
 //   let resourceRecord = await findResourceById(resourceid);
@@ -247,7 +255,12 @@ app.get("/search", (req, res) => {
 
 // Home page
 app.get("/", (req, res) => {
-  res.render("index");
+  getResourcesByUser(5, function(rows) {
+    let templatevars = {
+      data: rows
+    };
+    res.render("index", templatevars);
+  });
 });
 
 // Login page
