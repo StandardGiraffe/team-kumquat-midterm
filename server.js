@@ -191,21 +191,21 @@ const findUserById = async function (userId) {
 // }
 
 const handleResourceWithMeta = function(resourceId, cb) {
-  return knex.raw(`select * from resources join users on resources.user_id = users.id where resources.id = ${resourceId}`).asCallback(function(err, rows) {
+  return knex.raw(`select * from resources join users on resources.user_id = users.id where resources.id = ${resourceId} ORDER BY date_created DESC`).asCallback(function(err, rows) {
     if (err) return console.error(err);
     cb(rows.rows);
   });
 }
 
 const handleResourcesWithMeta = function(tags, cb) {
-  return knex.raw(`select * from resources join users on resources.user_id = users.id where tags ilike '%${tags}%'`).asCallback(function(err, rows) {
+  return knex.raw(`select * from resources join users on resources.user_id = users.id where tags ilike '%${tags}%' ORDER BY date_created DESC`).asCallback(function(err, rows) {
     if (err) return console.error(err);
     cb(rows.rows);
   });
 }
 
 const getResourcesByUser = function(userId, cb) {
-  return knex.raw(`select * from resources join users on resources.user_id = users.id where users.id = '${userId}'`).asCallback(function(err, rows) {
+  return knex.raw(`select * from resources join users on resources.user_id = users.id where users.id = '${userId}' ORDER BY date_created DESC`).asCallback(function(err, rows) {
     if (err) return console.error(err);
     cb(rows.rows);
   });
