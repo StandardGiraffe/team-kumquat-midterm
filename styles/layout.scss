@@ -33,11 +33,20 @@ body {
 
 
 #theContainer {
-  background-color: #008000 !important
+  background-color: #008000 !important;
+
+}
+
+#profileDisplay {
+  background-color: #c97928 !important;
 }
 
 
+.resource .card {
+  border: solid black 2px ;
+  border-radius: 7px;
 
+}
 
 #logo {
   height: 3em;

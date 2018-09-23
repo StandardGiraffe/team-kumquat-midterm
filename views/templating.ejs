@@ -44,7 +44,7 @@
 
     </form>
 
-    <div class = "container">
+    <div class = "container" id= "theContainer">
       <header>
         <%- include("partials/_header"); %>
       </header>
@@ -53,7 +53,7 @@
       <!-- ######################################################################
       User profile display
       ###################################################################### -->
-      <div style="background-color:#c97928 !important" class="jumbotron" id="user_profile">
+      <div id ="profileDisplay" class="jumbotron" id="user_profile">
 
         <!-- ALFRED: users.handle -->
         <h1 class="display-4" id="userName">[User's Name]</h1>
@@ -68,22 +68,22 @@
       ###################################################################### -->
 
 
-      <div class="col-lg-2 col-md-2 col-sm-4">
-        <div class="card my-1">
+      <div class="resource col-lg-2 col-md-2 col-sm-4">
+        <div class="card my-1 shadow-lg">
           <a href="https://en.wikipedia.org/wiki/Kumquat">
             <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Kumquat.jpeg/220px-Kumquat.jpeg" alt="Card image cap">
           </a>
           <div class="card-body text-center">
-            <a href="http://google.com">
+            <a href="http://google.com" style="color:black">
               <h3 class="card-title">Example resource</h5>
                 <p class="card-text">This is a description of the resource.  It should be small enough to fit several lines without breaking the template too badly.</p>
               </a>
               <br>
             </div>
             <div class="card-footer text-muted text-center resource_attributes">
-              <p class="card-text"><a href="/search?search_tags=kumquat"><i class="fas fa-tag"></i> kumquats</a></p>
-              <p class="card-text"><a href="/user/Bob"><i class="far fa-user"></i> Bob</a></p>
-              <p class="card-text"><i class="fas fa-brain"></i> 5 | <i class="far fa-star"></i> 5</p>
+              <p class="card-text"><a style="color:black"href="/search?search_tags=kumquat"><i class="fas fa-tag"></i> kumquats</a></p>
+              <p class="card-text"><a style="color:black"href="/user/Bob"><i class="far fa-user"></i> Bob</a></p>
+              <p class="card-text"><i style="color:black"class="fas fa-brain"></i> 5 | <i class="far fa-star"></i> 5</p>
             </div>
           </div>
         </div>
@@ -102,6 +102,6 @@
 
 
     </ul>
-    <
+
   </body>
 </html>
