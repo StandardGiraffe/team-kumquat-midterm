@@ -268,6 +268,11 @@ app.get("/login", (req, res) => {
   res.render("login");
 });
 
+//Templating page
+app.get("/temp", (req, res) => {
+  res.render("templating");
+});
+
 // Results page
 app.get("/results", (req, res) => {});
 
