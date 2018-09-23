@@ -23,7 +23,17 @@
       <header>
         <%- include("partials/_header"); %>
       </header>
-      <div class="row">
+
+      <div class="jumbotron">
+        <h1 class="display-4">
+          Y'all wanted some "<%- searchTopic%>".
+        </h1>
+        <h1 class="display-5">
+          We done found <%-hits%> result(s).
+        </h1>
+      </div>
+
+      <div id="search_results" class="row">
 
         <% for (kumquat of data) {%>
 
