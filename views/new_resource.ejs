@@ -26,26 +26,51 @@
       </header>
 
       <div class="jumbotron">
-        <h1 class="display-4">
-          New thinger?  Fancy.
+        <h1 class="display-5">
+          New thinger?  Faaancy.
         </h1>
-      </div>
+        <div class="row">
+          <div class="col-8">
+            <div class="card p-3 m-3">
 
-      <div class="row">
-        <div class="col-8">
-          <div class="card">
-            <form name="addNewKumquat" method="POST" action="/new_resource">
-              Add a new resource:<br>
-              <input type = "text" name ="title" placeholder="Title"><br>
-              <input type = "text" name ="url" placeholder="URL"><br>
-              <input type = "text" name ="tags" placeholder="Category"><br>
-              <input type = "integer" name ="rating" placeholder="Rating out of 5"><br>
-              <textarea name="description" placeholder="Add a description" cols="45" rows="8"></textarea><br>
-              <input type="submit" value="Add Kumquat" >
-            </form>
+              <form name="addNewKumquat" method="POST" action="/new_resource">
+
+                <div class="form-group">
+
+                  <label for="resource_title">What's yer thinger?</label>
+                  <br>
+                  <input class="form-control" type="text" id="resource_title" name ="title" placeholder="(Title)" size="50">
+
+                  <br>
+                  <label for="resource_url">Where's yer thinger at?</label>
+                  <br>
+                  <input class="form-control" type="text" id="resource_url" name ="url" placeholder="https://..." size="50">
+
+                  <br>
+                  <label for="resource_tags">What kind o' thing's yer thinger?</label>
+                  <br>
+                  <input class="form-control" type="text" id="resource_tags" name ="tags" placeholder="(Tags)" size="50">
+
+                  <br>
+                  <label for="resource_rating">How great's yer thinger?  Outta five!</label>
+                  <br>
+                  <input class="form-control" type="integer" id="resource_rating" name ="rating" placeholder="(1, 2, 3, 4, or 5)" size="50">
+
+                  <br>
+                  <label for="resource_description">What's yer thinger all 'bout?</label>
+                  <br>
+                  <textarea class="form-control" name="description" id="resource_description" placeholder="(Description)" cols="45" rows="8"></textarea><br>
+
+                  <input type="submit" value="Send 'er in!">
+
+                </div>
+              </form>
+
+            </div>
           </div>
         </div>
       </div>
+
 
 
 
