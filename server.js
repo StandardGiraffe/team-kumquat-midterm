@@ -357,7 +357,7 @@ app.post("/new_resource", async (req,res) => {
     .catch(function(err) {
       console.error(err);
     })
-  res.redirect("/users/5");
+  res.redirect("/");
 })
 
 
