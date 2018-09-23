@@ -350,9 +350,13 @@ app.get("/resource/:resourceid", async (req, res) => {
 
 // Testing Porp: User by ID
 app.get("/user/:userId", async (req, res) => {
-  let userRecord = await findUserById(req.params.userId);
-  console.log(userRecord[0]);
-})
+  getResourcesByUser(req.params.userId, function(rows) {
+    let templatevars = {
+      data: rows
+    };
+    res.render("other_user_profile", templatevars);
+  });
+});
 
 
 // Add new resource

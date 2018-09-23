@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
+    <title><%- data[0].name %>'s Stuff</title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -16,8 +16,8 @@
 
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
+
 
   <body>
     <div class = "container mb-5">
@@ -25,12 +25,30 @@
         <%- include("partials/_header"); %>
       </header>
 
+      <div class="jumbotron">
+        <div class="row">
+          <h1 class="display-4">Here's <%- data[0].name %>.  Lookit!</h1>
+        </div>
+        <div class="row">
+          <div class="col-2">
+            <img src="<%-data[0].avatar_url%>" class="img-fluid img-thumbnail rounded-circle border-dark">
+          </div>
+            <p class="lead"><%- data[0].bio %></p>
+          <div class="col-10">
 
+          </div>
+        </div>
+      </div>
 
+      <div class="card-deck">
+        <div id="search_results" class="row">
 
+          <% for (kumquat of data) {%>
 
-
-
+            <%- include("partials/_resource"); %>
+          <% } %>
+        </div>
+      </div>
   </div>
   </body>
 </html>
