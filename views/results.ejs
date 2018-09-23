@@ -23,7 +23,25 @@
       <header>
         <%- include("partials/_header"); %>
       </header>
-      <div class="row">
+
+      <div class="jumbotron">
+        <h1 class="display-4">
+          Y'all wanted some <%- searchTopic%>?
+        </h1>
+        <h1 class="display-6">
+          <%if (hits > 1) {%>
+            Well, we done found <%-hits%> a'those.
+          <% } else if (hits == 1) {%>
+            Jus' this li'l feller, but ee's reeeal perty!
+          <% } else if (!hits) { %>
+            Tarnation: we ain't done found no results, no how.
+            <br>
+            Wan' lookit some <a href="/discover">perty gee-gaws</a> a'stead?
+          <% } %>
+        </h1>
+      </div>
+
+      <div id="search_results" class="row">
 
         <% for (kumquat of data) {%>
 

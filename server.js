@@ -219,8 +219,12 @@ const handleResourcesWithMeta = function(tags, cb) {
 // Search by TAG
 app.get("/search", (req, res) => {
   handleResourcesWithMeta(req.query['search_tags'], function(rows) {
-    console.log("data: ", rows);
-    res.render("results", {data: rows});
+    let templatevars = {
+      data: rows,
+      hits: rows.length,
+      searchTopic: req.query['search_tags']
+    };
+    res.render("results", templatevars);
   });
 });
 
