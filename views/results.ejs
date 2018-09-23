@@ -31,6 +31,9 @@
         <h1 class="display-5">
           We done found <%-hits%> result(s).
         </h1>
+        <%if (!hits) {%>
+          Tarnation.  Wan' lookit some <a href="/discover">perty gee-gaws</a>?
+          <% } %>
       </div>
 
       <div id="search_results" class="row">
