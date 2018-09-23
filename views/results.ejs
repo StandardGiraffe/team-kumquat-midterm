@@ -26,14 +26,19 @@
 
       <div class="jumbotron">
         <h1 class="display-4">
-          Y'all wanted some "<%- searchTopic%>".
+          Y'all wanted some <%- searchTopic%>?
         </h1>
-        <h1 class="display-5">
-          We done found <%-hits%> result(s).
-        </h1>
-        <%if (!hits) {%>
-          Tarnation.  Wan' lookit some <a href="/discover">perty gee-gaws</a>?
+        <h1 class="display-6">
+          <%if (hits > 1) {%>
+            Well, we done found <%-hits%> a'those.
+          <% } else if (hits == 1) {%>
+            Jus' this li'l feller, but ee's reeeal perty!
+          <% } else if (!hits) { %>
+            Tarnation: we ain't done found no results, no how.
+            <br>
+            Wan' lookit some <a href="/discover">perty gee-gaws</a> a'stead?
           <% } %>
+        </h1>
       </div>
 
       <div id="search_results" class="row">
