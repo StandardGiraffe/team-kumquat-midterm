@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
+    <title>New Thinger!  Where's it at?</title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -25,18 +25,31 @@
         <%- include("partials/_header"); %>
       </header>
 
-<form name="addNewKumquat" method="POST" action="/new_resource">
-    Add a new resource:<br>
-    <input type = "text" name ="title" placeholder="Title"><br>
-    <input type = "text" name ="url" placeholder="URL"><br>
-    <input type = "text" name ="tags" placeholder="Category"><br>
-    <input type = "integer" name ="rating" placeholder="Rating out of 5"><br>
-    <textarea name="description" placeholder="Add a description" cols="45" rows="8"></textarea><br>
-    <input type="submit" value="Add Kumquat" >
+      <div class="jumbotron">
+        <h1 class="display-4">
+          New thinger?  Fancy.
+        </h1>
+      </div>
 
-</form>
+      <div class="row">
+        <div class="col-8">
+          <div class="card">
+            <form name="addNewKumquat" method="POST" action="/new_resource">
+              Add a new resource:<br>
+              <input type = "text" name ="title" placeholder="Title"><br>
+              <input type = "text" name ="url" placeholder="URL"><br>
+              <input type = "text" name ="tags" placeholder="Category"><br>
+              <input type = "integer" name ="rating" placeholder="Rating out of 5"><br>
+              <textarea name="description" placeholder="Add a description" cols="45" rows="8"></textarea><br>
+              <input type="submit" value="Add Kumquat" >
+            </form>
+          </div>
+        </div>
+      </div>
 
 
+
+</div>
 
 </div>
 
