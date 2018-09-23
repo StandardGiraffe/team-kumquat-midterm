@@ -180,15 +180,15 @@ const findUserById = async function (userId) {
 }
 
 // Returns an array of objects containing the resources associated with the passed userID. Iterate through the array to access them.
-const findResourcesByUser = async function (userId) {
-  return await knex.select("*").from("resources").join("users", "users.id", "=", "resources.user_id").where('users.id', userId);
-}
+// const findResourcesByUser = async function (userId) {
+//   return await knex.select("*").from("resources").join("users", "users.id", "=", "resources.user_id").where('users.id', userId);
+// }
 
-// Returns an array of objects containing the resources associated with the passed userID. Iterate through the array to access them.
-const findUserByResource = async function (resourceId) {
-  return await knex.raw(`SELECT users.name, users.id FROM users JOIN resources ON resources.user_id=users.id WHERE resources.id = ${resourceId}`);
-  // return await knex.select("name").from("users").join("resources", "users.id", "=", "resources.user_id").where('resources.user_id', resourceId);
-}
+// // Returns an array of objects containing the resources associated with the passed userID. Iterate through the array to access them.
+// const findUserByResource = async function (resourceId) {
+//   return await knex.raw(`SELECT users.name, users.id FROM users JOIN resources ON resources.user_id=users.id WHERE resources.id = ${resourceId}`);
+//   // return await knex.select("name").from("users").join("resources", "users.id", "=", "resources.user_id").where('resources.user_id', resourceId);
+// }
 
 const handleResourceWithMeta = function(resourceId, cb) {
   return knex.raw(`select * from resources join users on resources.user_id = users.id where resources.id = ${resourceId}`).asCallback(function(err, rows) {
@@ -204,17 +204,17 @@ const handleResourcesWithMeta = function(tags, cb) {
   });
 }
 
-const getResourceWithAllAssociatedMeta = async function (resourceid) {
-  let userName = await findUserByResource(resourceid);
-  let resourceRecord = await findResourceById(resourceid);
+// const getResourceWithAllAssociatedMeta = async function (resourceid) {
+//   let userName = await findUserByResource(resourceid);
+//   let resourceRecord = await findResourceById(resourceid);
 
-  return new Promise(function(resolve, reject) {
-    resolve({
-      user: userName.rows[0],
-      kumquat: resourceRecord[0]
-    });
-  });
-}
+//   return new Promise(function(resolve, reject) {
+//     resolve({
+//       user: userName.rows[0],
+//       kumquat: resourceRecord[0]
+//     });
+//   });
+// }
 
 // Search by TAG
 app.get("/search", (req, res) => {
