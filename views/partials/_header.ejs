@@ -1,7 +1,7 @@
       <!-- ######################################################################
       navigation
       ###################################################################### -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color:#FFBF00 !important ;">
         <a class="navbar-brand" href="/"><a href="/" class="navbar-left"><img src="/assets/image.png" id="logo"><span class= "test" style="color:blue;font-size:35px; ">BRAIN BOARD!</span></a></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -15,22 +15,22 @@
             </li>
           </ul>
 
-          <form id="new_resource" method="GET" action="/new_resource"  class="form-inline my-2 my-lg-0 mx-2" >
+          <form id="new_resource" method="GET" action="/new_resource"  class="form-inline my-2 my-lg-0 mx-2">
             <!-- +++++++++++++ALFRED: /users/:userid/resources GET  ++++++++++++++++ -->
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-plus-square"></i></button>
+            <button class="btn btn-light my-2 my-sm-0" type="submit"><i class="fas fa-plus-square"></i></button>
           </form>
 
 
           <form id="search_tags" class="form-inline my-2 my-lg-0 mx-4" method="GET" action="/search">
             <!-- +++ALFRED SEARCHES FOR RESOURCE.USER_ID++++ -->
-            <input class="form-control mr-sm-2" type="search" placeholder="Search by tag" aria-label="Search" name="search_tags">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+            <input class="form-control mr-sm-2 border-dark" type="search" placeholder="Search by tag" aria-label="Search" name="search_tags">
+            <button id="searchButton" class="btn btn-dark  my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
           </form>
 
 
           <form id="logout_button" class="form-inline my-2 my-lg-0 mx-2" >
             <!-- +++++++++++++ALFRED:THIS IS OUR /logout POST  ++++++++++++++++ -->
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Logout</button>
           </form>
           <!-- ++++++++ALFRED : THIS WILL SEND YOU TO /:id/profile/edit GET -->
           <a href = "#"><img src="http://pngimage.net/wp-content/uploads/2018/06/png-avatar-4.png" id="avatar" class = "mx-2"></a>
