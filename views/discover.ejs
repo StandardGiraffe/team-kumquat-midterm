@@ -23,23 +23,22 @@
       <header>
         <%- include("partials/_header"); %>
       </header>
-      <div class="row">
+        <div class="jumbotron">
+          <h1 class="display-4">
+            Lookee all'uh deese here gee-gaws:
+          </h1>
 
-        <% for (kumquat of data) {%>
+        </div>
 
-          <%- include("partials/_resource"); %>
-        <% } %>
+        <div class="row">
 
+          <% for (kumquat of allResources) {%>
 
-
-
-
-
+            <%- include("partials/_resource"); %>
+          <% } %>
 
 
-
-
-      </div>
+        </div>
 
   </div>
   </body>
