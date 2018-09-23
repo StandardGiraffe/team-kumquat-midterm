@@ -197,7 +197,7 @@ const handleResourceWithMeta = function(resourceId, cb) {
   });
 }
 
-const showAllResourcesWithMeta = function(tags, cb) {
+const handleResourcesWithMeta = function(tags, cb) {
   return knex.raw(`select * from resources join users on resources.user_id = users.id where tags ilike '%${tags}%'`).asCallback(function(err, rows) {
     if (err) return console.error(err);
     cb(rows.rows);
