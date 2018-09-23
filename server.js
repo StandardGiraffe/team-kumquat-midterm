@@ -197,7 +197,7 @@ const handleResourceWithMeta = function(resourceId, cb) {
   });
 }
 
-const handleResourcesWithMeta = function(tags, cb) {
+const showAllResourcesWithMeta = function(tags, cb) {
   return knex.raw(`select * from resources join users on resources.user_id = users.id where tags ilike '%${tags}%'`).asCallback(function(err, rows) {
     if (err) return console.error(err);
     cb(rows.rows);
@@ -215,6 +215,22 @@ const handleResourcesWithMeta = function(tags, cb) {
 //     });
 //   });
 // }
+
+// Discover page
+app.get("/discover", (req, res) => {
+  // showAllResourcesWithMeta
+  return knex.raw(`select * from resources join users on resources.user_id = users.id order by date_created desc`)
+  .asCallback(function(err, rows) {
+    if (err) return console.error(err);
+    console.log("data: ", rows.rows);
+    let templatevars = {
+      allResources: rows.rows
+    }
+  res.render("discover", templatevars);
+  });
+
+});
+
 
 // Search by TAG
 app.get("/search", (req, res) => {
@@ -247,10 +263,7 @@ app.get("/register", (req, res) => {
   res.render("register");
 });
 
-// Discover page
-app.get("/discover", (req, res) => {
-  res.render("discover");
-});
+
 
 // Load Edit Profile Page
 app.get("/edit", (req, res) => {
