@@ -243,6 +243,11 @@ app.get("/register", (req, res) => {
   res.render("register");
 });
 
+// Discover page
+app.get("/discover", (req, res) => {
+  res.render("discover");
+});
+
 // Load Edit Profile Page
 app.get("/edit", (req, res) => {
   knex('users').where('name', me)
