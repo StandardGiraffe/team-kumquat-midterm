@@ -56,8 +56,17 @@ body {
 }
 
 #logo {
-  height: 5em;
+  height: 7em;
+  position: absolute;
   float: left;
+}
+
+#company_name {
+  color: black;
+  font-size: 45px;
+  text-decoration: none;
+  position:relative;
+  left: 2.3em;
 }
 
 #avatar {
