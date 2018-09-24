@@ -18,13 +18,13 @@
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   </head>
 
-  <body>
-    <div class = "container mb-5">
+  <body id="body">
+    <div class = "container mb-5" id="theContainer">
       <header>
         <%- include("partials/_header"); %>
       </header>
 
-      <div class="jumbotron">
+      <div id ="profileDisplay" class="jumbotron" id="user_profile">
         <h1 class="display-4">
           Y'all wanted some <%- searchTopic%>?
         </h1>

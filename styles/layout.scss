@@ -28,11 +28,9 @@ body {
 // ----------------------------
 
 
-
-
-
 #body {
   background-color: #0fb01b;
+
 }
 
 
@@ -46,9 +44,14 @@ body {
 }
 
 
-.resource .card {
+#resource_card {
   border: solid black 2px ;
   border-radius: 7px;
+
+  p, a {
+    color: inherit;
+    text-decoration: none;
+  }
 
 }
 
@@ -73,13 +76,18 @@ body {
   color: inherit;
 }
 
-#discription {
+.blackify_text {
   color: inherit;
 }
 
 
+.navbar{
 
+  background-image: url("assets/plank3.png");
 
+  background-color: white;
+
+ }
 
 
 

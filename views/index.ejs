@@ -16,16 +16,18 @@
 
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+
+
   </head>
 
-  <body>
+  <body id="body">
 
-    <div class = "container mb-5">
+    <div class = "container mb-5" id="theContainer">
       <header>
         <%- include("partials/_header"); %>
       </header>
 
-      <div class="jumbotron">
+      <div id ="profileDisplay" class="jumbotron blackify_text">
         <h1 class="display-4">Howdy, <%- data[0].name %>!</h1>
         <h1 class="display-5">Learn you good!  Here's yer stuff:</h1>
       </div>

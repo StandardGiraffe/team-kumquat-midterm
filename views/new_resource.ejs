@@ -19,16 +19,17 @@
     <!-- <script type="text/javascript" src="/scripts/app.js"></script> -->
   </head>
 
-  <body>
-    <div class = "container mb-5">
+  <body id="body">
+    <div class = "container mb-5" id="theContainer">
       <header>
         <%- include("partials/_header"); %>
       </header>
 
-      <div class="jumbotron">
+      <div id ="profileDisplay" class="jumbotron" id="user_profile">
         <h1 class="display-5">
           New thinger?  Faaancy.
         </h1>
+      </div>
         <div class="row">
           <div class="col-8">
             <div class="card p-3 m-3">
@@ -69,7 +70,6 @@
             </div>
           </div>
         </div>
-      </div>
 
 
 

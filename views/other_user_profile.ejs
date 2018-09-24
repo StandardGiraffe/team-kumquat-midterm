@@ -19,13 +19,13 @@
   </head>
 
 
-  <body>
-    <div class = "container mb-5">
+  <body id="body">
+    <div class = "container mb-5" id="theContainer">
       <header>
         <%- include("partials/_header"); %>
       </header>
 
-      <div class="jumbotron">
+      <div id ="profileDisplay" class="jumbotron" id="user_profile">
         <div class="row">
           <h1 class="display-4">Here's <%- data[0].name %>.  Lookit!</h1>
         </div>
