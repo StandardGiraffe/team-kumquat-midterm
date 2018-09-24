@@ -393,6 +393,7 @@ app.post("/new_resource", async (req,res) => {
       date_created: currentDate,
       tags: req.body['tags'],
       picture_url: pictureURL,
+      rating: req.body['rating'],
       user_id: 5
     })
     .then((rows) => {
